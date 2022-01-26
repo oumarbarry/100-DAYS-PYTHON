@@ -1,0 +1,580 @@
+DAY 1:
+    print()
+    Variables & Naming Convention
+    Debugging
+    SyntaxError, IndentationError
+    input()
+    len()
+    ressources: repl.it, ThonnyIDE
+
+Day 2:
+    data types:
+        string: "hello"
+        integer: 1_000_000
+        float: 9_999.99
+        boolean: True / False
+    TypeError
+    type()
+    str(), int(), float(), bool()
+    Mathematical Operators:
+        +, -, *, /, **, %
+        Priority: () **, * / (left-to-right), + - (left-to-right)
+
+    exercise1:
+        two_digit_number = input("Type a two-digit number: ")
+        first_num = int(two_digit_number[0]) 
+        second_num = int(two_digit_number[1])
+        sum = first_num + second_num
+        print(f"Sum of {first_num} + {second_num} is : {sum}")
+    exercise2:
+        weight = float(input("enter your weight (kg): "))
+        height = float(input("enter your height (m): "))
+        bmi = int(weight / (height**2))
+        print(f"your bmi is: {bmi}")
+
+    round():
+        round(2.6666) #== 3
+        round(2.6666, 2) #== 2,67
+    type():
+        type( 8//3 ) #== 'int'
+        type( 8//3.0 ) #== 'float'
+    +=, -=, /=, *=, etc
+    f-strings: f"yohohohohoho"
+
+    exercise3:
+        age = int(input("What is your current age ? "))
+        sub = 90 - age
+        print(f"You have {sub*36522} days, i.e {sub*52} weeks, i.e {sub*12} months left.")
+
+Day 3:
+    ressources: draw.io, ascii.co.uk/art
+
+    if...[else]
+    comparison operators: < > <= >= == !=
+
+    exercise1:
+        num = int(input("Which number do you want to check ? "))
+        if num%2==0:
+            print("This is an even number")
+        else:
+            print("This is an odd number")
+
+    nested if...[else]
+    if...elif..[else]
+    multiple if statement
+    
+    exercise2:
+        weight = float(input("enter your weight (kg): "))
+        height = float(input("enter your height (m): "))
+        bmi = weight / (height**2)
+        rounded_bmi = round(bmi, 1)
+
+        if rounded_bmi < 18.5:
+            print(f"Your bmi is: {rounded_bmi}, you're underweight")
+        elif 18.5 <= rounded_bmi < 25:
+            print(f"Your bmi is: {rounded_bmi}, you have a normal weight")
+        elif 25 <= rounded_bmi < 30:
+            print(f"Your bmi is: {rounded_bmi}, you're overweight")
+        elif 30 <= rounded_bmi < 35:
+            print(f"Your bmi is: {rounded_bmi}, you're obese")
+        else:
+            print(f"Your bmi is: {rounded_bmi}, you're clinically obese")
+
+    exercise3:
+        year = int(input("Which year do you want to check ? "))
+        if year%4==0:
+            if year%100==0:
+                if year%400==0:
+                    print("Leap year.")
+                else:
+                    print("Not leap year.")
+            else:
+                print("Leap year.")
+        else:
+            print("Not leap year.")
+
+    exercise4:
+        print("Welcome to Python Pizza Deliveries !")
+        size = input("What size of pizza do you want ? S, M or L: ")
+        add_pepperoni = input("Do you want pepperoni ? Y or N: ")
+        extra_cheese = input("Do you want cheese ? Y or N: ")
+
+        bill = 0
+
+        if size == 'S':
+            bill += 15
+        elif size == 'M':
+            bill += 20
+        elif size == 'L':
+            bill += 25
+
+        if add_pepperoni == 'Y':
+            if size == 'S':
+                bill += 2
+            else:
+                bill += 3
+
+        if extra_cheese == 'Y':
+            bill += 1
+
+        print(f"Your final bill is: {bill}")
+
+    Logical operators: and, or, not
+
+    exercise5:
+        print("Welcome to Python Love Calculator !")
+        my_name = input("What is your name ? ")
+        her_name = input("What is her name ? ")
+
+        combined_name = (my_name + her_name).lower() 
+        t = combined_name.count("t")
+        r = combined_name.count("r")
+        u = combined_name.count("u")
+        e = combined_name.count("e")
+
+        l = combined_name.count("l")
+        o = combined_name.count("o")
+        v = combined_name.count("v")
+        e = combined_name.count("e")
+
+        true_sum = t + r + u + e
+        love_sum = l + o + v + e
+
+        score = int(f"{true_sum}{love_sum}")
+
+        if score < 10 or score > 90:
+            print(f"Your score is {score}, you go together like coke and mentos.")
+        elif 40 <= score <= 50:
+            print(f"Your score is {score}, you are alright together.")
+        else:
+            print(f"Your score is {score}.")
+    
+DAY 4:
+    ressources:
+        - https://www.askpython.com/
+        - https://www.khanacademy.org/computing/computer-science/cryptography/crypt/v/random-vs-pseudorandom-number-generators
+
+    Randomisation:
+        Mersenne Twister is the pseudo-random number generator (PRNG) algorithm used in Python
+
+    exercise1:
+        import random
+
+        seed_num = int(input("Create a seed number: "))
+        random.seed(seed_num) #by default, the seed_num is the computer timestamp
+        randomized = random.randint(0, 1)
+        #random.random()*5 #will generate numbers between 0.000... and 4.999...
+
+        if randomized == 1:
+            print("Heads")
+        else:
+            print("Tails")
+
+    Lists: []
+
+    exercise2:
+        import random
+
+        seed_num = int(input("Create a seed number: "))
+        random.seed(seed_num)
+
+        csv_names = input("Give me everybody's names (as name1, name2) : ")
+        names = csv_names.split(', ')
+        index = random.randint(0, len(names)-1)
+        print(f"{names[index]} is going to buy the meal today.")
+        #==print(f"{random.choice(names)} is going to buy the meal today.")
+
+    IndexError
+    Nested Lists
+
+    exercise3:
+        row1 = ["⬜️","⬜️","⬜️"]
+        row2 = ["⬜️","⬜️","⬜️"]
+        row3 = ["⬜️","⬜️","⬜️"]
+        map = [row1, row2, row3]
+        print(f"{row1}\n{row2}\n{row3}")
+        position = input("Where do you want to put the treasure? ")
+
+        line = int(position[1])-1
+        column = int(position[0])-1
+        map[line][column] = '👑' 
+
+        print(f"{row1}\n{row2}\n{row3}")
+
+DAY 5:
+    For loops
+
+    sum(), max(), min()
+
+    exercise1:
+        student_heights = input("Input a list of student heights (cm): ").split()
+        for n in range(0, len(student_heights)):
+            student_heights[n] = int(student_heights[n])
+
+        sum_of_heights = 0
+        number_of_students = 0
+        for height in student_heights:
+            sum_of_heights += height
+            number_of_students+=1
+
+        average = round(sum_of_heights / number_of_students)
+        print(f"the average size = {average}cm")
+    exercise2:
+        student_scores = input("Input a list of student score (0-10): ").split()
+        for n in range(0, len(student_scores)):
+            student_scores[n] = int(student_scores[n])
+
+        max_score = 0
+        for score in student_scores:
+            if score > max_score:
+                max_score = score
+        print(f"The highest score in the class is : {max_score}")
+
+    range(start, stop, [step])
+
+    exercice3:
+        solution 1:
+            total=0
+            for number in range(0, 101, 2):
+                total+=number
+            print(total)
+
+        solution 2:
+            total=0
+            for number in range(1, 101):
+                if number%2==0:
+                    total+=number
+            print(total)
+
+    exercise4:
+         for number in range(1, 101):
+         if number%3==0 and number%5==0:
+             print("FizzBuzz")
+         elif number%3==0:
+             print("Fizz")
+         elif number%5==0:
+             print("Buzz")
+         else:
+             print(number)
+
+DAY 6:
+    Functions:
+        Python Built-in Functions
+        Definiton & Calling our own functions
+
+    Indentation: 
+        Spaces vs Tabs
+        PEP8
+
+    While Loop
+    Infinite Loop
+
+DAY 8:
+    Functions with Inputs
+
+    Parameters vs Arguments: variable name inside function vs value passed in
+
+    exercise1:
+        import math
+
+        def paint_calc(height, width, coverage):
+            number_of_cans = math.ceil( (height * width) / coverage )
+            print(f"You'll neeed {number_of_cans} cans of paint.")
+
+        h = int(input("Height of wall: "))
+        w = int(input("Width of wall: "))
+
+        paint_calc(height=h, width=w, coverage=5)
+
+    exercise2:
+        def prime_checker(number):
+            is_prime = True
+            for i in range(2, number):
+                if number%i == 0: 
+                    is_prime = False
+            print("It's a prime number") if is_prime else print("It's not a prime number")
+
+        n = int(input("Number to check: "))
+        prime_checker(number=n)
+
+DAY 9:
+    Dictionaries
+
+    Nesting
+
+    exercise1:
+        student_scores = {
+            "Harry": 81,
+            "Ron": 78,
+            "Hermione": 99,
+            "Draco": 74,
+            "Neville": 62,
+        }
+
+        student_grades = {}
+
+        for key, value in student_scores.items():
+            if value > 90:
+                student_grades[key] = "Oustanding"
+            elif value > 80:
+                student_grades[key] = "Exceeds Expectations"
+            elif value > 70:
+                student_grades[key] = "Acceptable"
+            else:
+                student_grades[key] = "Fail"
+
+        print(student_grades)
+
+    exercice2:
+        from typing import List
+        travel_log = [
+            {
+                'country': 'France',
+                'visits': 12,
+                'cities': ['Paris', 'Lille', 'Dijon'],
+            },
+            {
+                'country': 'Germany',
+                'visits': 5,
+                'cities': ['Berlin', 'Hamburg', 'Munich'],
+            },
+        ]
+
+        def add_new_country(country: str, visits: int, cities: List[int]) -> None:
+            travel_log.append({'country': country, 'visits': visits, 'cities': cities})
+
+        add_new_country('Russia', 2, ['Moscow', 'St Petersburg'])        
+        print(travel_log)
+
+    ressources: pythontutor.com
+
+DAY 10:
+    Functions with Outputs
+    Docstrings
+
+    exercise1:
+        def is_leap(year):
+            if year % 4 == 0:
+                if year % 100 == 0:
+                    if year % 400 == 0: return True
+                    else: return False
+                else: return True
+            else: return False
+
+        def days_in_month(year, month):
+            if not (1 <= month <= 12): return "Invalid Month"
+            month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]  
+            if is_leap(year): month_days[1] = 29
+            return month_days[month-1]
+
+        year = int(input("Enter a year: "))
+        month = int(input("Enter a month: "))
+        days = days_in_month(year, month)
+        print(days)
+   
+DAY 12:
+    Local (Function) vs Global Scope
+
+    Block Scope: there's NO block scope in python
+
+    global keyword:
+        enemies = 1
+        def increase_enemies():
+            global enemies
+            enemies += 1
+            print(f"inside enemies: {enemies}")
+        increase_enemies()
+        print(f"outside enemies: {enemies}")
+
+        #better way:
+        enemies = 1
+        def increase_enemies():
+            return enemies + 1
+
+        enemies = increase_enemies()
+    
+    Python Constants: 
+        no truly constants in python, there're just UPPER_CASE naming convention
+
+    ressources: http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+
+DAY 13:
+    Debugging: Everybody gets bugs
+        1. Describe the Problem
+        2. Reproduce the Bug
+        3. Play Computer & evaluate each line
+        4. Fixing Erros as comin' & watching for red underlines
+        5. print() is your friend
+        6. Debugger & breakpoint
+
+        7. Take a Break
+        8. Ask a Friend
+        9. Run your Code closely Often
+        10. Ask StackOverflow
+
+DAY 14:
+    
+DAY 15:
+    Pycharm Features:
+        Spell Check
+        Split Editor
+        Built-in Linter (with PEP-8)
+        Local Code History
+        Structure View
+        Refactor Rename
+    in mac: ctrl + click == right click
+
+    ressources:
+        https://www.python.org/dev/peps/pep-0008/
+        https://emojipedia.org/hot-beverage/
+
+DAY 16:
+    in oop, we try to model real life objects 
+        and those objects have things (attributes) and also can do things (methods)
+
+    OOP, Class - Object, Attributes - Methods
+        
+    PyPI
+        pip install <package> 
+        or Pycharm->Preferences->Project->Interpreter
+    
+    Go to Implementation: Alt+CMD+B
+
+    exercise1:
+        from turtle import Turtle, Screen
+
+        timmy = Turtle()
+        timmy.shape('turtle')
+        timmy.color('cyan')
+        timmy.forward(100)
+
+        screen = Screen()
+        screen.exitonclick()
+
+    exercise2:
+        from prettytable import PrettyTable
+
+        table = PrettyTable()
+        table.add_column("Pokemon Name", ['Pikachu', 'Squirtle', 'Charmander'])
+        table.add_column("Type", ['Electric', 'Water', 'Fire'])
+        table.align = 'l' # or default 'c' or 'r'
+
+DAY 17:
+    PascalCase, snake_case, camelCase:
+        PascalCase for class naming
+        snake_case for others (like functions, variables, ...)
+        camelCase: seen on other languages
+
+DAY 18:
+    Turtle Graphics
+
+    exercice1:
+        from turtle import Turtle, Screen
+
+        franklin = Turtle()
+        franklin.shape("turtle")
+        franklin.color("cyan")
+
+        for _ in range(4):
+            franklin.forward(100)
+            franklin.right(90)
+
+        screen = Screen()
+        screen.exitonclick()
+
+    exercise2:
+        from turtle import Turtle, Screen
+
+        franklin = Turtle()
+
+        for _ in range(10):
+            franklin.forward(15)
+            franklin.penup()
+            franklin.forward(15)
+            franklin.pendown()
+
+        screen = Screen()
+        screen.exitonclick()
+
+    Importing Modules:
+        import turtle
+        from turtle import Turtle
+        from turtle import *
+        import turtle as tt
+    Installing packages:
+        pip install <package> //PyPI.com
+
+    exercise3:
+        from turtle import Turtle, Screen
+        import random
+
+        franklin = Turtle()
+        colors = [
+            'gold', 
+            'SeaGreen', 
+            'DeepPink', 
+            'DarkBlue', 
+            'DarkGrey', 
+            'chocolate', 
+            'DeepSkyBlue', 
+            'MidnightBlue',
+        ]
+
+        for side in range(3, 11):
+            franklin.color( random.choice(colors) )
+            for _ in range(side):
+                franklin.right(360/side)
+                franklin.forward(100) 
+
+        screen = Screen()
+        screen.exitonclick()
+
+    Python TUPLES
+
+    exercise4:
+        from turtle import Turtle, Screen, colormode
+        import random as r
+
+        colormode(255)
+        franklin = Turtle()
+        franklin.pen(shown=False, pensize=20, speed=0)
+
+
+        for _ in range(300):
+            franklin.color(*tuple([ r.randint(0, 255) for _ in range(3) ]))
+            franklin.forward(40)
+            franklin.setheading( r.choice( [0, 90, 180, 270] ) )
+
+        screen = Screen()
+        screen.exitonclick()
+
+    exercise5:
+        import turtle
+        import random as r
+
+        turtle.colormode(255)
+        franklin = turtle.Turtle()
+        franklin.pen(shown=False, speed=0)
+
+        for _ in range(365//5):
+            franklin.color( *tuple([r.randint(0, 255) for _ in range(3)]) )
+            franklin.circle(150)
+            franklin.setheading(franklin.heading() + 5)    
+
+        screen = turtle.Screen()
+        screen.exitonclick()
+
+    exercise6:
+        import colorgram
+        colors = [
+            (c.rgb.r, c.rgb.g, c.rgb.b) for c in colorgram.extract('img.jpg', 15)
+        ]
+
+    ressources:
+        turtle colors: https://cs111.wellesley.edu/labs/lab01/colors
+
+DAY 19:
+    Higher Order Functions
+  
+
+DAY 20:
